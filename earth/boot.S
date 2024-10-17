@@ -4,6 +4,9 @@
  *
  * Description: entry point of the bootloader
  */
+
+#include "memlayout.h"
+
     .section .text.enter
     .global boot_loader, boot_lock, kernel_lock
 
@@ -16,7 +19,7 @@ boot_loader:
     /* Acquire kernel_lock */
 
     /* Student's code ends here. */
-    li sp, 0x80400000
+    li sp, EGOS_STACK_TOP
     call boot
 
 .bss

@@ -5,6 +5,9 @@
  * Description: entry point of the kernel
  * When getting an interrupt or exception, the CPU sets its program counter to this entry point
  */
+
+#include "memlayout.h"
+
     .section .text
     .global trap_from_S_mode, trap_from_M_mode
 
@@ -28,7 +31,7 @@ trap_from_M_mode:
 
     /* Step1 */
     csrw mscratch, sp
-    li sp, 0x80400000
+    li sp, EGOS_STACK_TOP
 
     /* Step2 */
     /* Student's code goes here (multi-core and atomic instruction) */
